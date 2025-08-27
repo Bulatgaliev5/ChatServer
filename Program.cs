@@ -1,4 +1,6 @@
+using ChatServer.Data;
 using ChatServer.Hubs;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +18,8 @@ builder.Services.AddCors(options =>
               .AllowCredentials();
     });
 });
-
+builder.Services.AddDbContext<ChatContext>(options =>
+    options.UseSqlite("Data Source=chat.db"));
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())

@@ -4,27 +4,27 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мобильный чат</title>
-    <link rel="stylesheet" href="~/css/mobile.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мобильный чат с БД</title>
+  <link rel="stylesheet" href="~/css/mobile.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
 </head>
 <body>
-    <div class="chat-wrapper">
-        <header class="chat-header">
-            <h1>Чат</h1>
-        </header>
+  <div class="chat-wrapper">
+    <header class="chat-header">
+      <h1>Чат</h1>
+    </header>
 
-        <div class="chat-messages" id="messagesList"></div>
+    <div class="chat-messages" id="messagesList"></div>
 
-        <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Ваше имя" />
-            <input type="text" id="messageInput" placeholder="Сообщение" />
-            <button id="sendButton">Отправить</button>
-        </div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Ваше имя" />
+      <input type="text" id="messageInput" placeholder="Сообщение" />
+      <button id="sendButton">Отправить</button>
     </div>
+  </div>
 
-    <script src="~/js/mobile.js"></script>
+  <script src="~/js/mobile.js"></script>
 </body>
 </html>
