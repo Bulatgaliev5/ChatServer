@@ -1,13 +1,137 @@
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Segoe UI',Tahoma,sans-serif;background:#f3f4f6;display:flex;justify-content:center;align-items:center;height:100vh;}
-.chat-wrapper{width:100%;max-width:480px;height:95vh;display:flex;flex-direction:column;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.2);overflow:hidden;}
-.chat-header{background:#2563eb;color:white;text-align:center;padding:16px;font-size:1.5rem;font-weight:bold;}
-.chat-messages{flex:1;padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;}
-.chat-messages .message{padding:8px 12px;border-radius:10px;max-width:80%;word-wrap:break-word;}
-.chat-messages .message.self{background:#dbeafe;align-self:flex-end;}
-.chat-messages .message.other{background:#e5e7eb;align-self:flex-start;}
-.chat-input{display:flex;gap:8px;padding:12px;background:#f9fafb;}
-.chat-input input{flex:1;padding:10px;border-radius:10px;border:1px solid #d1d5db;font-size:1rem;}
-.chat-input button{padding:10px 16px;border:none;border-radius:10px;background:#2563eb;color:white;font-weight:bold;cursor:pointer;transition:background 0.2s;}
-.chat-input button:hover{background:#1d4ed8;}
-@media(max-width:480px){.chat-wrapper{height:100vh;border-radius:0;}}
+﻿/* --- Ñáðîñ áàçîâûõ ñòèëåé --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* --- Êîíòåéíåð ÷àòà --- */
+.chat-wrapper {
+    width: 100%;
+    max-width: 480px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+/* --- Øàïêà --- */
+.chat-header {
+    background: #2563eb;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* --- Ñîîáùåíèÿ --- */
+.chat-messages {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+    .chat-messages .message {
+        padding: 8px 12px;
+        border-radius: 10px;
+        max-width: 80%;
+        word-wrap: break-word;
+    }
+
+        /* Ñâîè ñîîáùåíèÿ */
+        .chat-messages .message.self {
+            background: #dbeafe;
+            align-self: flex-end;
+        }
+
+        /* Ñîîáùåíèÿ äðóãèõ */
+        .chat-messages .message.other {
+            background: #e5e7eb;
+            align-self: flex-start;
+        }
+
+/* --- Ïîëå ââîäà --- */
+.chat-input {
+    display: block;
+    gap: 8px;
+    padding: 12px;
+    background: #f9fafb;
+}
+
+    .chat-input input {
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #d1d5db;
+        font-size: 1rem;
+    }
+
+    .chat-input button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 10px;
+        background: #2563eb;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+        .chat-input button:hover {
+            background: #1d4ed8;
+        }
+
+/* --- Àäàïòàöèÿ äëÿ ìîáèëüíûõ --- */
+@media (max-width: 480px) {
+    .chat-wrapper {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+
+
+    /* --- Ïîëå ââîäà --- */
+    .chat-input {
+        display: block;
+        gap: 8px;
+        padding: 12px;
+        background: #f9fafb;
+    }
+
+        .chat-input input {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #d1d5db;
+            font-size: 1rem;
+            margin-block-end: 15px;
+            margin-left: 20px;
+        }
+
+        .chat-input button {
+            margin-left: 70px;
+            margin-block-end: 15px;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+}
