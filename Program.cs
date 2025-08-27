@@ -2,13 +2,16 @@ using ChatServer.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// -----------------
+// Добавляем сервисы
+// -----------------
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
 
-var corsPolicy = "AllowWpfClient";
+// CORS для мобильного клиента / WPF
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(corsPolicy, policy =>
+    options.AddPolicy("AllowMobileClient", policy =>
     {
         policy.SetIsOriginAllowed(_ => true)
               .AllowAnyHeader()
@@ -17,27 +20,49 @@ builder.Services.AddCors(options =>
     });
 });
 
+// -----------------
+// Настройка Kestrel на Render
+// -----------------
+builder.WebHost.ConfigureKestrel(options =>
+{
+    // Render задаёт порт через переменную окружения PORT
+    var portStr = Environment.GetEnvironmentVariable("PORT");
+    int port = 5000;
+    if (!string.IsNullOrEmpty(portStr) && int.TryParse(portStr, out var p))
+        port = p;
+
+    options.ListenAnyIP(port);
+});
+
+// -----------------
+// Строим приложение
+// -----------------
 var app = builder.Build();
 
+// -----------------
+// Middleware
+// -----------------
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(80); // HTTP
-});
+app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-app.UseCors(corsPolicy);
+app.UseCors("AllowMobileClient");
 
+// -----------------
+// Маршруты и хабы
+// -----------------
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapHub<ChatServer.Hubs.ChatHub>("/chathub");
+app.MapHub<ChatHub>("/chathub");
 
+// -----------------
+// Запуск
+// -----------------
 app.Run();
