@@ -1,14 +1,29 @@
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мобильный чат</title>
+    <link rel="stylesheet" href="~/css/mobile.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
+</head>
+<body>
+    <div class="chat-container">
+        <header>
+            <h1>Чат</h1>
+        </header>
 
-<div class="chat">
-  <div class="row">
-    <input id="userInput" placeholder="Ваше имя" />
-  </div>
-  <div class="row">
-    <input id="messageInput" placeholder="Сообщение" />
-    <button id="sendButton">Отправить</button>
-  </div>
-  <ul id="messagesList"></ul>
-</div>
+        <div class="messages" id="messagesList"></div>
+
+        <div class="input-group">
+            <input type="text" id="userInput" placeholder="Ваше имя" />
+            <input type="text" id="messageInput" placeholder="Сообщение" />
+            <button id="sendButton">Отправить</button>
+        </div>
+    </div>
+    <script src="~/js/mobile.js"></script>
+</body>
+</html>
