@@ -8,14 +8,24 @@ const sendButton = document.getElementById('sendButton');
 const userInput = document.getElementById('userInput');
 const messageInput = document.getElementById('messageInput');
 
+// При получении сообщения
 connection.on("ReceiveMessage", (user, message, time) => {
     const div = document.createElement('div');
     div.className = 'message';
     div.textContent = `[${time}] ${user}: ${message}`;
+
+    // Разделяем свои и чужие сообщения
+    if (user === userInput.value) {
+        div.classList.add('self');
+    } else {
+        div.classList.add('other');
+    }
+
     messagesList.appendChild(div);
     messagesList.scrollTop = messagesList.scrollHeight;
 });
 
+// Отправка сообщения
 sendButton.addEventListener('click', async () => {
     const user = userInput.value || 'Anon';
     const msg = messageInput.value;
@@ -28,6 +38,7 @@ sendButton.addEventListener('click', async () => {
     }
 });
 
+// Подключение к SignalR
 async function start() {
     try {
         await connection.start();

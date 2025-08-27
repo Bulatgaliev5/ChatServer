@@ -1,10 +1,137 @@
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:system-ui,sans-serif; background:#0f172a; color:#e2e8f0; display:flex; justify-content:center; align-items:center; height:100vh;}
-.chat-container {width:100%; max-width:480px; height:90vh; display:flex; flex-direction:column; background:#1e293b; border-radius:12px; overflow:hidden;}
-header {padding:12px; background:#111827; text-align:center; font-size:1.5rem; font-weight:600;}
-.messages {flex:1; padding:12px; overflow-y:auto; display:flex; flex-direction:column; gap:6px;}
-.messages .message {background:#111827; border:1px solid #334155; border-radius:8px; padding:8px 12px; word-wrap:break-word;}
-.input-group {display:flex; padding:12px; gap:8px; background:#111827;}
-.input-group input {flex:1; padding:8px; border-radius:8px; border:1px solid #334155; background:#1e293b; color:#e2e8f0;}
-.input-group button {padding:8px 16px; border:none; border-radius:8px; background:#22c55e; color:#0b111f; font-weight:600; cursor:pointer;}
-@media (max-width:480px){.chat-container{height:100vh; border-radius:0;}}
+/* --- Сброс базовых стилей --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* --- Контейнер чата --- */
+.chat-wrapper {
+    width: 100%;
+    max-width: 480px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+/* --- Шапка --- */
+.chat-header {
+    background: #2563eb;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* --- Сообщения --- */
+.chat-messages {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+    .chat-messages .message {
+        padding: 8px 12px;
+        border-radius: 10px;
+        max-width: 80%;
+        word-wrap: break-word;
+    }
+
+        /* Свои сообщения */
+        .chat-messages .message.self {
+            background: #dbeafe;
+            align-self: flex-end;
+        }
+
+        /* Сообщения других */
+        .chat-messages .message.other {
+            background: #e5e7eb;
+            align-self: flex-start;
+        }
+
+/* --- Поле ввода --- */
+.chat-input {
+    display: block;
+    gap: 8px;
+    padding: 12px;
+    background: #f9fafb;
+}
+
+    .chat-input input {
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #d1d5db;
+        font-size: 1rem;
+    }
+
+    .chat-input button {
+        padding: 10px 16px;
+        border: none;
+        border-radius: 10px;
+        background: #2563eb;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+        .chat-input button:hover {
+            background: #1d4ed8;
+        }
+
+/* --- Адаптация для мобильных --- */
+@media (max-width: 480px) {
+    .chat-wrapper {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+
+
+    /* --- Поле ввода --- */
+    .chat-input {
+        display: block;
+        gap: 8px;
+        padding: 12px;
+        background: #f9fafb;
+    }
+
+        .chat-input input {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #d1d5db;
+            font-size: 1rem;
+            margin-block-end: 15px;
+            margin-left: 20px;
+        }
+
+        .chat-input button {
+            margin-left: 70px;
+            margin-block-end: 15px;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+}
