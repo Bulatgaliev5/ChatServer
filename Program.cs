@@ -20,8 +20,14 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddDbContext<ChatContext>(options =>
     options.UseSqlite("Data Source=chat.db"));
-var app = builder.Build();
 
+
+var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ChatContext>();
+    db.Database.EnsureCreated(); // <-- создаёт базу и таблицы если их нет
+}
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
